@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3cnlmaq2s8jm"]
+
+[ext_resource type="Script" path="res://scenes/buttons.gd" id="1_48ee8"]
+[ext_resource type="Texture2D" uid="uid://brqa7twsu1qmo" path="res://assets/controller_gui/button_a.png" id="1_c2rkg"]
+[ext_resource type="Texture2D" uid="uid://dal55gjsoqqfd" path="res://assets/controller_gui/button_b.png" id="2_sgppi"]
+[ext_resource type="Texture2D" uid="uid://648lnc5vovqy" path="res://assets/controller_gui/button_x.png" id="3_i6tgo"]
+[ext_resource type="Texture2D" uid="uid://dea5wshu88fjq" path="res://assets/controller_gui/button_y.png" id="4_wvw85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkf40"]
+atlas = ExtResource("1_c2rkg")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrqhc"]
+atlas = ExtResource("2_sgppi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57iwk"]
+atlas = ExtResource("3_i6tgo")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvyv0"]
+atlas = ExtResource("4_wvw85")
+region = Rect2(0, 0, 48, 48)
+
+[node name="Buttons" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_48ee8")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="A" type="TextureRect" parent="Container"]
+layout_mode = 2
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 96.0
+texture = SubResource("AtlasTexture_bkf40")
+
+[node name="B" type="TextureRect" parent="Container"]
+layout_mode = 2
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 144.0
+texture = SubResource("AtlasTexture_qrqhc")
+
+[node name="X" type="TextureRect" parent="Container"]
+layout_mode = 2
+offset_left = 48.0
+offset_right = 96.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_57iwk")
+
+[node name="Y" type="TextureRect" parent="Container"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 96.0
+texture = SubResource("AtlasTexture_bvyv0")
