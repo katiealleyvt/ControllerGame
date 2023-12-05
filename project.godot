@@ -42,6 +42,11 @@ right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="MusicNote"
+2d_physics/layer_2="Goal"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -1,9 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfwtsv35iayak"]
+[gd_scene load_steps=7 format=3 uid="uid://cfwtsv35iayak"]
 
-[ext_resource type="PackedScene" uid="uid://c3cnlmaq2s8jm" path="res://scenes/buttons.tscn" id="1_gc8f6"]
+[ext_resource type="PackedScene" uid="uid://cgfq6xqcrlb5d" path="res://scenes/conveyor.tscn" id="1_p2nun"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_rf4df"]
+[ext_resource type="PackedScene" uid="uid://csk031h1vrd2u" path="res://scenes/goal.tscn" id="3_ile5w"]
+[ext_resource type="FontFile" uid="uid://can1q4d53eb1x" path="res://assets/text/font/TTF (16px)/Toriko.ttf" id="4_yri4g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6if8"]
+font = ExtResource("4_yri4g")
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_8r6wc"]
+font = ExtResource("4_yri4g")
+font_size = 55
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_rf4df")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Buttons" parent="UI" instance=ExtResource("1_gc8f6")]
+[node name="MusicNotes" type="Node2D" parent="UI"]
+
+[node name="Conveyor" parent="UI" instance=ExtResource("1_p2nun")]
+
+[node name="Goal" parent="UI" instance=ExtResource("3_ile5w")]
+position = Vector2(168, 498)
+
+[node name="MusicNoteTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="TopUI" type="HBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 72.0
+offset_bottom = 26.0
+
+[node name="ScoreLabel" type="Label" parent="TopUI"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_s6if8")
+
+[node name="ScoreNumber" type="Label" parent="TopUI"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8r6wc")
+
+[connection signal="buttonEnteredGoal" from="UI/Goal" to="." method="_on_goal_button_entered_goal"]
+[connection signal="buttonExitedGoal" from="UI/Goal" to="." method="_on_goal_button_exited_goal"]
+[connection signal="timeout" from="MusicNoteTimer" to="." method="_on_music_note_timer_timeout"]
