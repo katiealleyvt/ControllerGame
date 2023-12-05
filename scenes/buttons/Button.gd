@@ -12,6 +12,7 @@ signal buttonPress(position)
 func _ready():
 	add_button_type()
 	$Texture.texture.set_region(Rect2(0,0,48,48))
+	add_sound()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,4 +44,17 @@ func add_button_type():
 	buttonTexture.set_atlas(load(fileToLoad))
 	
 	$Texture.set_texture(buttonTexture)
+func add_sound():
 	
+	var audioFile
+	
+	match buttonType:
+		"up":
+			audioFile = load("res://assets/audio/ping/Retro Instrument - crystal - C00.wav")
+		"down":
+			audioFile = load("res://assets/audio/ping/Retro Instrument - crystal - C01.wav")
+		"left":
+			audioFile = load("res://assets/audio/ping/Retro Instrument - crystal - C02.wav")
+		"right":
+			audioFile = load("res://assets/audio/ping/Retro Instrument - crystal - C03.wav")
+	$InputSound.stream = audioFile

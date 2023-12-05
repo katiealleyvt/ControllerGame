@@ -15,3 +15,5 @@ shape = SubResource("CircleShape2D_l65ff")
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
+
+[node name="InputSound" type="AudioStreamPlayer" parent="."]
